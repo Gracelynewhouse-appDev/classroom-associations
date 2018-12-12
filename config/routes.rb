@@ -1,10 +1,30 @@
 Rails.application.routes.draw do
 
+  # Routes for the Enrollment resource:
+
+  # CREATE
+  get("/enrollments/new", { :controller => "enrollments", :action => "new_form" })
+  post("/create_enrollment", { :controller => "enrollments", :action => "create_row" })
+
+  # READ
+  get("/enrollments", { :controller => "enrollments", :action => "index" })
+  get("/enrollments/:id_to_display", { :controller => "enrollments", :action => "show" })
+
+  # UPDATE
+  get("/enrollments/:prefill_with_id/edit", { :controller => "enrollments", :action => "edit_form" })
+  post("/update_enrollment/:id_to_modify", { :controller => "enrollments", :action => "update_row" })
+
+  # DELETE
+  get("/delete_enrollment/:id_to_remove", { :controller => "enrollments", :action => "destroy_row" })
+
+  #------------------------------
+
   # Routes for the Course resource:
 
   # CREATE
   get("/courses/new", { :controller => "courses", :action => "new_form" })
   post("/create_course", { :controller => "courses", :action => "create_row" })
+  get("/create_new_course", { :controller => "courses", :action => "create_row" })
 
   # READ
   get("/courses", { :controller => "courses", :action => "index" })
@@ -45,6 +65,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/students/new", { :controller => "students", :action => "new_form" })
   post("/create_student", { :controller => "students", :action => "create_row" })
+  post("/create_new_student", { :controller => "students", :action => "create_row" })
 
   # READ
   get("/students", { :controller => "students", :action => "index" })
